@@ -1,36 +1,49 @@
-# AI Assistant Context & Rules
+# AI Assistant Context & Rules - Hierarchical Memory System
 
-## Engineering Principles
+## Memory Loading Strategy
+Load memories in order: Global → Work Type → Workspace Project
+- **Global**: Universal engineering principles
+- **Work Type**: Domain-specific best practices (embedded-systems, ci-cd, zephyr-rtos)
+- **Workspace**: Project-specific context and configurations
+
+## Current Workspace Detection
+**Path**: `/home/ajlennon/data_drive/esl/eink-microcontroller`
+**Memory Location**: `workspace/home-ajlennon-data_drive-esl-eink-microcontroller/`
+
+## Global Engineering Principles
 - Never assume code works until explicitly validated
 - Work as engineering collaborator, challenge assumptions
-- Always verify with concrete evidence (builds, tests)
+- Use relative paths only (workspace portability)
+- One useful README, not multiple unmaintained docs
+- Never overwrite source files with script redirection (>)
 
-## MCXC143VFM Hardware
-- 128KB Flash, 32KB RAM at 0x20000000
-- UART2 PTD4/PTD5 @ 115200 (bootloader + app)
-- Flash: Production (32KB boot + 92KB app + 4KB config)
-- Shell interface CRITICAL - never disable CONFIG_SHELL
+## Work Type: Embedded Systems + Zephyr RTOS
+- Design flash layouts for 2-3x future growth
+- Keep source files <500-800 lines, split by responsibility
+- Zephyr: Device Tree integration, minimal ISR, work queues
+- Production builds: constrain flash, not RAM resources
 
-## CI/CD Best Practices  
-- Use `actions/cache@v4` (auto-save), not `actions/cache/save@v4`
-- Docker: `zephyrprojectrtos/zephyr-build:latest` + verify SDK 0.17.4
-- Purpose-built images eliminate 5-10min setup time
+## Work Type: CI/CD
+- Use `actions/cache@v4` (auto-save), avoid `actions/cache/save@v4` mixing
+- Purpose-built Docker images: `zephyrprojectrtos/zephyr-build:latest`
+- Verify exact SDK versions (e.g., Zephyr SDK 0.17.4)
+- Eliminate 5-10min setup time with pre-built images
 
-## Security
-- ONE signing key only: `keys/root-ec-p256.pem`
-- MCUboot UART programming: copy firmware before reset
+## Workspace: MCXC143VFM E-Ink Power Controller
+- **Hardware**: 128KB Flash, 32KB RAM at 0x20000000, UART2 PTD4/PTD5
+- **Security**: ONE signing key only at `keys/root-ec-p256.pem`
+- **Shell**: CRITICAL - never disable CONFIG_SHELL (even production)
+- **MCUboot**: UART programming via mcumgr, 2s boot delay
+- **Flash Layout**: Production (32KB boot + 92KB app + 4KB config)
+- **Development**: Remote via SSH to ajlennon@62.3.79.162:23
+- **Testing**: `target_scripts/test_target_board.py` before updates
+- **Updates**: `target_scripts/firmware_update.py` (~108s optimized)
 
-## Code Standards
-- Relative paths only (workspace portability)
-- Files <500-800 lines, split by responsibility  
-- Never overwrite source files with redirection (>)
-- Zephyr best practices: Device Tree, minimal ISR, work queues
+## Memory Update Protocol
+When working in this workspace:
+1. Load workspace-specific memories from `workspace/home-ajlennon-data_drive-esl-eink-microcontroller/`
+2. Update memories after significant development sessions
+3. Commit changes to `git@github.com:DynamicDevices/memories-of-an-ai-future.git`
 
-## Development Workflow
-1. Test: `target_scripts/test_target_board.py`
-2. Build production with commit
-3. Update: `target_scripts/firmware_update.py` (~108s)
-4. Verify version matches commit hash
-
-**Context**: MCXC143VFM E-Ink Power Controller
-**Updated**: 2025-09-27
+**Repository**: `git@github.com:DynamicDevices/memories-of-an-ai-future.git`
+**Last Updated**: 2025-09-27

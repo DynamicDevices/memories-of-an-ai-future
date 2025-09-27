@@ -1,0 +1,31 @@
+{
+  "workspace_mappings": {
+    "/home/ajlennon/data_drive/esl/eink-microcontroller": {
+      "memory_path": "workspace/home-ajlennon-data_drive-esl-eink-microcontroller",
+      "project_name": "MCXC143VFM E-Ink Power Controller",
+      "work_types": ["embedded-systems", "zephyr-rtos", "ci-cd"],
+      "description": "ARM Cortex-M0+ power management controller with Zephyr RTOS and MCUboot",
+      "last_updated": "2025-09-27"
+    }
+  },
+  "work_type_categories": {
+    "embedded-systems": {
+      "description": "Microcontroller hardware, memory layouts, system design",
+      "applies_to": ["hardware design", "memory management", "resource optimization"]
+    },
+    "zephyr-rtos": {
+      "description": "Zephyr RTOS development, device drivers, system integration",
+      "applies_to": ["device tree", "drivers", "RTOS best practices"]
+    },
+    "ci-cd": {
+      "description": "CI/CD pipelines, build systems, automation",
+      "applies_to": ["GitHub Actions", "Docker", "build optimization"]
+    }
+  },
+  "global_categories": {
+    "engineering-principles": {
+      "description": "Universal engineering practices applicable to all projects",
+      "always_load": true
+    }
+  }
+}
