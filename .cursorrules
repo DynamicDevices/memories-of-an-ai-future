@@ -1,0 +1,36 @@
+# AI Assistant Context & Rules
+
+## Engineering Principles
+- Never assume code works until explicitly validated
+- Work as engineering collaborator, challenge assumptions
+- Always verify with concrete evidence (builds, tests)
+
+## MCXC143VFM Hardware
+- 128KB Flash, 32KB RAM at 0x20000000
+- UART2 PTD4/PTD5 @ 115200 (bootloader + app)
+- Flash: Production (32KB boot + 92KB app + 4KB config)
+- Shell interface CRITICAL - never disable CONFIG_SHELL
+
+## CI/CD Best Practices  
+- Use `actions/cache@v4` (auto-save), not `actions/cache/save@v4`
+- Docker: `zephyrprojectrtos/zephyr-build:latest` + verify SDK 0.17.4
+- Purpose-built images eliminate 5-10min setup time
+
+## Security
+- ONE signing key only: `keys/root-ec-p256.pem`
+- MCUboot UART programming: copy firmware before reset
+
+## Code Standards
+- Relative paths only (workspace portability)
+- Files <500-800 lines, split by responsibility  
+- Never overwrite source files with redirection (>)
+- Zephyr best practices: Device Tree, minimal ISR, work queues
+
+## Development Workflow
+1. Test: `target_scripts/test_target_board.py`
+2. Build production with commit
+3. Update: `target_scripts/firmware_update.py` (~108s)
+4. Verify version matches commit hash
+
+**Context**: MCXC143VFM E-Ink Power Controller
+**Updated**: 2025-09-27
