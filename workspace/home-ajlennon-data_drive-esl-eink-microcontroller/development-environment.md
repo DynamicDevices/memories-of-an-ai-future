@@ -5,11 +5,18 @@
 
 ## CI/CD Pipeline
 
-**Current Status**: Production-ready GitHub Actions pipeline
+**Current Status**: Production-ready GitHub Actions pipeline (WORKING)
 - **Docker Image**: `zephyrprojectrtos/zephyr-build:latest` with SDK 0.17.4 verification
 - **Self-hosted Runner**: [self-hosted, Linux, X64] with 2GB ccache
 - **Build Variants**: Debug + Production (with MCUboot signing)
 - **Artifacts**: Versioned binaries with git commit hashes
+
+**Key Lessons Learned**:
+- **Simplicity**: Eliminated 155→109 lines (30% reduction) while maintaining functionality
+- **Logic**: Only initialize West workspace if not already initialized (`if [ ! -d ".west" ]`)
+- **Environment**: CI mirrors local development exactly (same scripts, same env vars)
+- **Performance**: Avoid system-wide operations (`find /`) - use targeted cleanup only
+- **Order**: SDK installation creates CMake registry, cleanup must happen AFTER installation
 
 ## Build Variants
 
