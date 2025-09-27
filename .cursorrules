@@ -1,14 +1,27 @@
 # AI Assistant Context & Rules - Hierarchical Memory System
 
+## 🚨 CRITICAL SECURITY REQUIREMENT 🚨
+**NEVER STORE SECRETS IN AI MEMORIES**: No private keys, passwords, tokens, certificates, or personal information in this public repository. Only store patterns, architectures, and best practices with placeholder values.
+
 ## Memory Loading Strategy
 Load memories in order: Global → Work Type → Workspace Project
-- **Global**: Universal engineering principles
-- **Work Type**: Domain-specific best practices (embedded-systems, ci-cd, zephyr-rtos)
+- **Global**: Universal engineering principles + security requirements
+- **Work Type**: Domain-specific best practices 
 - **Workspace**: Project-specific context and configurations
 
-## Current Workspace Detection
-**Path**: `/home/ajlennon/data_drive/esl/eink-microcontroller`
-**Memory Location**: `workspace/home-ajlennon-data_drive-esl-eink-microcontroller/`
+## Workspace Detection & Mappings
+Auto-detect workspace and load relevant memories:
+
+- `/home/ajlennon/data_drive/esl/eink-microcontroller` → MCXC143VFM E-Ink Power Controller
+  - Work Types: embedded-systems, zephyr-rtos, ci-cd
+- `/home/ajlennon/data_drive/esl/eink-spectra6` → EL133UF1 E-Ink Display Driver  
+  - Work Types: embedded-systems, linux-kernel, graphics-programming
+- `/home/ajlennon/data_drive/esl/active-cantool` → CAN Bus GUI Test Tool
+  - Work Types: rust-development, gui-applications, automotive-protocols
+- `/home/ajlennon/data_drive/ai/ai-investor` → AI Investment Analysis Platform
+  - Work Types: python-data-science, machine-learning, financial-analysis
+- `/home/ajlennon/data_drive/dd/meta-dynamicdevices` → Meta-DynamicDevices Yocto Layer
+  - Work Types: yocto-development, embedded-linux, build-systems
 
 ## Global Engineering Principles
 - Never assume code works until explicitly validated
@@ -17,33 +30,21 @@ Load memories in order: Global → Work Type → Workspace Project
 - One useful README, not multiple unmaintained docs
 - Never overwrite source files with script redirection (>)
 
-## Work Type: Embedded Systems + Zephyr RTOS
-- Design flash layouts for 2-3x future growth
-- Keep source files <500-800 lines, split by responsibility
-- Zephyr: Device Tree integration, minimal ISR, work queues
-- Production builds: constrain flash, not RAM resources
-
-## Work Type: CI/CD
-- Use `actions/cache@v4` (auto-save), avoid `actions/cache/save@v4` mixing
-- Purpose-built Docker images: `zephyrprojectrtos/zephyr-build:latest`
-- Verify exact SDK versions (e.g., Zephyr SDK 0.17.4)
-- Eliminate 5-10min setup time with pre-built images
-
-## Workspace: MCXC143VFM E-Ink Power Controller
-- **Hardware**: 128KB Flash, 32KB RAM at 0x20000000, UART2 PTD4/PTD5
-- **Security**: ONE signing key only at `keys/root-ec-p256.pem`
-- **Shell**: CRITICAL - never disable CONFIG_SHELL (even production)
-- **MCUboot**: UART programming via mcumgr, 2s boot delay
-- **Flash Layout**: Production (32KB boot + 92KB app + 4KB config)
-- **Development**: Remote via SSH to ajlennon@62.3.79.162:23
-- **Testing**: `target_scripts/test_target_board.py` before updates
-- **Updates**: `target_scripts/firmware_update.py` (~108s optimized)
+## Work Type Context (Loaded Based on Project)
+- **embedded-systems**: Flash layouts for 2-3x growth, files <500-800 lines
+- **zephyr-rtos**: Device Tree integration, minimal ISR, work queues
+- **ci-cd**: Use `actions/cache@v4`, purpose-built Docker images
+- **rust-development**: Memory safety, cross-platform abstractions, Cargo
+- **python-data-science**: Pandas vectorization, proper ML workflows
+- **yocto-development**: Layer organization, BitBake best practices
+- **linux-kernel**: Proper driver development, hardware abstraction
 
 ## Memory Update Protocol
-When working in this workspace:
-1. Load workspace-specific memories from `workspace/home-ajlennon-data_drive-esl-eink-microcontroller/`
-2. Update memories after significant development sessions
-3. Commit changes to `git@github.com:DynamicDevices/memories-of-an-ai-future.git`
+When working in any workspace:
+1. Auto-detect workspace path and load relevant memories
+2. Update workspace memories after significant development sessions
+3. Add new work types as needed for emerging technologies
+4. Commit changes to preserve knowledge across sessions
 
 **Repository**: `git@github.com:DynamicDevices/memories-of-an-ai-future.git`
 **Last Updated**: 2025-09-27

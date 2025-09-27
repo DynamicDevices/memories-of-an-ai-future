@@ -6,6 +6,34 @@
       "work_types": ["embedded-systems", "zephyr-rtos", "ci-cd"],
       "description": "ARM Cortex-M0+ power management controller with Zephyr RTOS and MCUboot",
       "last_updated": "2025-09-27"
+    },
+    "/home/ajlennon/data_drive/esl/eink-spectra6": {
+      "memory_path": "workspace/home-ajlennon-data_drive-esl-eink-spectra6",
+      "project_name": "EL133UF1 E-Ink Display Driver",
+      "work_types": ["embedded-systems", "linux-kernel", "graphics-programming"],
+      "description": "Linux driver for 13.3\" color e-ink display with image processing",
+      "last_updated": "2025-09-27"
+    },
+    "/home/ajlennon/data_drive/esl/active-cantool": {
+      "memory_path": "workspace/home-ajlennon-data_drive-esl-active-cantool",
+      "project_name": "CAN Bus GUI Test Tool",
+      "work_types": ["rust-development", "gui-applications", "automotive-protocols"],
+      "description": "Cross-platform CAN bus testing application with Iced GUI framework",
+      "last_updated": "2025-09-27"
+    },
+    "/home/ajlennon/data_drive/ai/ai-investor": {
+      "memory_path": "workspace/home-ajlennon-data_drive-ai-ai-investor",
+      "project_name": "AI Investment Analysis Platform",
+      "work_types": ["python-data-science", "machine-learning", "financial-analysis"],
+      "description": "Python platform for financial data analysis using AI and ML techniques",
+      "last_updated": "2025-09-27"
+    },
+    "/home/ajlennon/data_drive/dd/meta-dynamicdevices": {
+      "memory_path": "workspace/home-ajlennon-data_drive-dd-meta-dynamicdevices",
+      "project_name": "Meta-DynamicDevices Yocto Layer",
+      "work_types": ["yocto-development", "embedded-linux", "build-systems"],
+      "description": "Custom Yocto layer for Dynamic Devices hardware platforms",
+      "last_updated": "2025-09-27"
     }
   },
   "work_type_categories": {
@@ -20,6 +48,50 @@
     "ci-cd": {
       "description": "CI/CD pipelines, build systems, automation",
       "applies_to": ["GitHub Actions", "Docker", "build optimization"]
+    },
+    "rust-development": {
+      "description": "Rust programming, Cargo, cross-platform development",
+      "applies_to": ["system programming", "GUI applications", "performance-critical code"]
+    },
+    "python-data-science": {
+      "description": "Python data analysis, machine learning, scientific computing",
+      "applies_to": ["data analysis", "ML models", "financial analysis", "research"]
+    },
+    "yocto-development": {
+      "description": "Yocto Project, BitBake, embedded Linux distribution building",
+      "applies_to": ["custom Linux distributions", "BSP development", "embedded systems"]
+    },
+    "linux-kernel": {
+      "description": "Linux kernel development, device drivers, kernel modules",
+      "applies_to": ["kernel drivers", "hardware abstraction", "system programming"]
+    },
+    "graphics-programming": {
+      "description": "Graphics programming, image processing, display drivers",
+      "applies_to": ["image processing", "display drivers", "graphics algorithms"]
+    },
+    "gui-applications": {
+      "description": "GUI application development, user interface design",
+      "applies_to": ["desktop applications", "cross-platform GUI", "user experience"]
+    },
+    "automotive-protocols": {
+      "description": "Automotive communication protocols, CAN bus, vehicle networks",
+      "applies_to": ["CAN bus", "automotive systems", "vehicle communication"]
+    },
+    "machine-learning": {
+      "description": "Machine learning algorithms, model development, AI systems",
+      "applies_to": ["ML models", "deep learning", "AI applications"]
+    },
+    "financial-analysis": {
+      "description": "Financial data analysis, trading algorithms, risk management",
+      "applies_to": ["trading systems", "risk analysis", "portfolio optimization"]
+    },
+    "build-systems": {
+      "description": "Build systems, cross-compilation, package management",
+      "applies_to": ["build automation", "cross-compilation", "distribution building"]
+    },
+    "embedded-linux": {
+      "description": "Embedded Linux systems, board support packages, system integration",
+      "applies_to": ["embedded systems", "BSP development", "hardware integration"]
     }
   },
   "global_categories": {
