@@ -1,47 +1,49 @@
-# EL133UF1 E-Ink Display Driver Project
+# EL133UF1 E-Ink Display Driver - Production System
 
-> **Workspace Path**: `/home/ajlennon/data_drive/esl/eink-spectra6`  
-> **Project Type**: Linux Kernel Driver, Embedded Graphics, C/C++  
-> **Hardware**: EL133UF1 13.3" Color E-Ink Display
+## Status: PRODUCTION READY (Deployed at 62.3.79.162)
 
-## Project Overview
+### Project Overview
+Production-ready Linux driver for 13.3" color E-Ink display with PNG/JPEG support and autonomous slideshow.
 
-Production-ready Linux driver for the EL133UF1 13.3" color e-ink display with direct PNG and JPEG image support, advanced dithering, and automatic landscape rotation. Cross-platform development with ARM64 cross-compilation support.
+### Key Features
+- **Direct PNG/JPEG Loading**: No external conversion tools needed
+- **Automatic Landscape Rotation**: Portrait (1200x1600) direct, landscape (1600x1200) auto-rotated
+- **Advanced Stucki Dithering**: Photographic quality on 6-color e-ink
+- **Production Demo System**: Autonomous slideshow with dynamic image detection
+- **libgpiod v2.x Integration**: Modern GPIO control with hardware abstraction
 
-## Hardware Specifications
+### Hardware Configuration
+- **Target**: imx93-jaguar-eink at 62.3.79.162
+- **SPI**: /dev/spidev0.0
+- **GPIO Pins**: Reset=526, DC=527, CS0=529, BUSY=528, CS1=619
+- **Display**: 1200x1600 pixels, dual controller (600x1600 each), 6-color palette
+- **User**: fio/fio with passwordless sudo
 
-- **Display**: EL133UF1 13.3" Color E-Ink Display
-- **Resolution**: 1200x1600 (portrait), 1600x1200 (landscape with auto-rotation)
-- **Colors**: 6-color E-Ink (Black, White, Yellow, Red, Blue, Green)
-- **Controller**: Dual controller architecture (side-by-side)
-- **Interface**: Linux kernel driver with character device interface
+### Quick Deploy
+```bash
+# Production kiosk setup
+sudo ./scripts/manage_slideshow_service.sh install
 
-## Key Features
+# Add images
+scp *.png *.jpg fio@62.3.79.162:/home/fio/el133uf1_driver/demo_images/
 
-- **Direct Image Loading**: PNG and JPEG support without external conversion
-- **Advanced Dithering**: Stucki serpentine error diffusion for photographic quality
-- **Automatic Rotation**: Portrait displays directly, landscape auto-rotated 90° CCW
-- **Cross-Platform**: ARM64 cross-compilation with stub libraries
-- **Modular Processing**: Separated image processing with command-line control
+# Manual display
+sudo LD_LIBRARY_PATH=. ./el133uf1_demo image=file.png
+```
 
-## Development Environment
+### Technical Stack
+- **Dependencies**: libgpiod v2.x, libpng16, libjpeg-turbo 3.0.1, libcurl, systemd
+- **Build**: ARM64 cross-compilation with stub libraries
+- **Architecture**: Dual controller optimization for EL133UF1
 
-- **Language**: C/C++ with Linux kernel modules
-- **Build System**: CMake with cross-compilation support
-- **Target Platform**: ARM64 Linux (cross-compiled)
-- **Image Libraries**: PNG and JPEG processing libraries
-- **Testing**: Demo mode with automatic image downloading and slideshow
+### Color Mapping
+Black(0,0,0)→0x00, White(255,255,255)→0x11, Yellow(255,255,0)→0x22, Red(255,0,0)→0x33, Blue(0,0,255)→0x55, Green(0,255,0)→0x66
 
-## Architecture
+### Integration
+- **E-Ink Ecosystem**: Display component with MCXC143VFM power controller
+- **Linux BSP**: Deployed via meta-dynamicdevices Yocto layer
+- **Performance**: ~37 seconds refresh, optimized for embedded constraints
 
-- **Kernel Driver**: Character device interface for display control
-- **Image Processing**: Modular image processing pipeline
-- **Color Matching**: Intelligent 6-color E-Ink palette matching
-- **Dithering Engine**: Advanced error diffusion algorithms
-- **Format Support**: Multiple image formats with automatic detection
-
-## Work Types
-
-- **embedded-systems**: Hardware interfacing, kernel drivers
-- **graphics-programming**: Image processing, dithering algorithms
-- **linux-kernel**: Kernel module development, device drivers
+---
+**Repository**: `/data_drive/esl/eink-spectra6/`  
+**Deployment**: Active production slideshow at 62.3.79.162

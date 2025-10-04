@@ -1,29 +1,21 @@
-# Memories of an AI Future - Hierarchical Knowledge System
+# Memories of an AI Future - Optimized Knowledge System
 
 > **AI Assistant Knowledge Base with Contextual Loading**
-
-This repository contains a hierarchical memory system for AI assistants, organized by scope and automatically loaded based on workspace context.
 
 ## Memory Hierarchy
 
 ```
 📁 memories-of-an-ai-future/
-├── 🌍 global/                    # Universal engineering principles
-│   └── engineering-principles.md
-├── 🔧 worktype/                  # Domain-specific best practices
-│   ├── ci-cd/
-│   │   └── best-practices.md
-│   ├── embedded-systems/
-│   │   └── hardware-design.md
-│   └── zephyr-rtos/
-│       └── best-practices.md
+├── 🌍 global/                    # Universal principles (always loaded)
+│   ├── engineering-principles.md
+│   └── exceptional-embedded-engineer-personality-rubric.md
+├── 🔧 worktype/                  # Domain-specific practices
+│   ├── embedded-systems/hardware-design.md
+│   ├── yocto-development/best-practices.md
+│   └── [other work types]
 ├── 🏠 workspace/                 # Project-specific context
-│   └── home-ajlennon-data_drive-esl-eink-microcontroller/
-│       ├── project-context.md
-│       └── development-environment.md
-├── .cursorrules                  # Auto-loaded by Cursor
-├── workspace-mapping.json       # Workspace → Memory mapping
-└── README.md                    # This file
+│   └── [project contexts - optimized for token efficiency]
+└── workspace-mapping.json       # Optimized workspace → memory mapping
 ```
 
 ## Loading Strategy
@@ -31,73 +23,40 @@ This repository contains a hierarchical memory system for AI assistants, organiz
 **Hierarchical Context Loading**: Global → Work Type → Workspace Project
 
 1. **Global Memories** (Always loaded)
+   - Exceptional embedded engineer behavioral framework
    - Universal engineering principles
-   - Documentation standards
-   - File safety rules
 
 2. **Work Type Memories** (Based on project domain)
-   - `ci-cd`: GitHub Actions, Docker, build optimization
-   - `embedded-systems`: Hardware design, memory layouts
-   - `zephyr-rtos`: Device tree, drivers, RTOS practices
+   - Domain-specific best practices and patterns
+   - Technology-specific guidelines
 
 3. **Workspace Memories** (Project-specific)
-   - Hardware specifications and pin assignments
-   - Development workflows and testing procedures
-   - Security requirements and build configurations
+   - Current project status and key achievements
+   - Technical details and integration points
+   - Next steps and priorities
 
-## Workspace Detection
+## Optimization Features
 
-The system automatically detects workspace context based on file paths:
+- **Token Efficiency**: Condensed context preserving essential information
+- **Key Achievement Focus**: Highlights major accomplishments and current status
+- **Integration Mapping**: Clear project relationships and dependencies
+- **Action-Oriented**: Emphasizes next steps and current priorities
 
-- **Path**: `/home/ajlennon/data_drive/esl/eink-microcontroller`
-- **Maps to**: `workspace/home-ajlennon-data_drive-esl-eink-microcontroller/`
-- **Work Types**: embedded-systems, zephyr-rtos, ci-cd
+## Current Project Portfolio
 
-## Current Project Context
+**Production Ready (6)**: Meta-DynamicDevices Yocto (50-80% power savings), EL133UF1 E-Ink Driver, Sentai Conversational AI v2, MetaTrader 5 Trading, MCXC143VFM Controller, Kantar Firmware
 
-**MCXC143VFM E-Ink Power Controller**
-- ARM Cortex-M0+ microcontroller (128KB Flash, 32KB RAM)
-- Zephyr RTOS with MCUboot bootloader
-- CI/CD pipeline with GitHub Actions
-- Remote development and testing infrastructure
+**Active Development (4)**: AI Investment Platform, CAN Bus Tool, E-Ink Signage Driver, Radar Monitoring
 
 ## Usage
 
-### Cursor Integration
-The `.cursorrules` file is automatically loaded and provides:
-- Workspace detection and memory loading strategy
-- Condensed context from all relevant memory levels
-- Project-specific rules and constraints
-
-### Manual Reference
-- Browse `global/`, `worktype/`, and `workspace/` directories
-- Use `workspace-mapping.json` to understand project relationships
-- Reference specific memory files for detailed technical knowledge
-
-### Memory Updates
-AI assistants should:
-1. Update memories after significant development sessions
-2. Add new workspace mappings for new projects
-3. Maintain the hierarchical organization
-4. Commit changes to preserve knowledge
-
-## Benefits
-
-- **Contextual Relevance**: Only load memories relevant to current work
-- **Scalable Organization**: Easy to add new projects and work types
 - **Automatic Loading**: Cursor integration provides seamless context
-- **Knowledge Preservation**: Structured storage prevents knowledge loss
-- **Team Sharing**: Version-controlled memories accessible to all team members
-
-## Maintenance
-
-- **Auto-Updated**: AI assistants update during development sessions
-- **Conflict Resolution**: Newer memories take precedence
-- **Validation**: Technical claims verified against implementations
-- **Expansion**: New work types and workspaces added as needed
+- **Memory Updates**: AI assistants update during development sessions
+- **Contextual Relevance**: Only loads memories relevant to current work
+- **Knowledge Preservation**: Optimized storage prevents knowledge loss
 
 ---
 
 **Repository**: `git@github.com:DynamicDevices/memories-of-an-ai-future.git`  
-**Maintainer**: AI Assistant (Claude Sonnet 4)  
-**Last Updated**: 2025-09-27
+**Version**: 2.0 (Token Optimized)  
+**Maintainer**: AI Assistant (Claude Sonnet 4)
